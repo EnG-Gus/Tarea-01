@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Año Bisiesto - Versión Simple</title>
+</head>
+<body>
+    <h2>Verificar Año Bisiesto</h2>
+    
+    <label for="fecha">Ingrese una fecha:</label>
+    <input type="date" id="fecha">
+    
+    <button onclick="verificar()">Verificar</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        function verificar() {
+            // Obtener la fecha ingresada
+            const fechaInput = document.getElementById('fecha').value;
+            
+            if (!fechaInput) {
+                alert('Por favor ingrese una fecha');
+                return;
+            }
+            
+            // Extraer el año de la fecha
+            const año = new Date(fechaInput).getFullYear();
+            
+            // Verificar si es bisiesto
+            const esBisiesto = (año % 4 === 0 && año % 100 !== 0) || (año % 400 === 0);
+            
+            // Mostrar resultado
+            const resultado = document.getElementById('resultado');
+            resultado.textContent = `El año ${año} ${esBisiesto ? 'ES' : 'NO ES'} bisiesto.`;
+            resultado.style.color = esBisiesto ? 'green' : 'red';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Invertir Palabra</h2>
+    
+    <input type="text" id="palabra" placeholder="Escribe una palabra">
+    <button onclick="invertir()">Invertir</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        function invertir() {
+            // Obtener la palabra del input
+            const palabra = document.getElementById("palabra").value;
+            
+            // Invertir la palabra
+            const palabraInvertida = palabra.split('').reverse().join('');
+            
+            // Mostrar el resultado
+            document.getElementById("resultado").textContent = palabraInvertida;
+        }
+    </script>
+</body>
+</html>

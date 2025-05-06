@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>¿Cuántos días faltan para mi cumpleaños?</h2>
+    
+    <label>Ingresa tu fecha de cumpleaños: </label>
+    <input type="date" id="cumple">
+    <button onclick="calcularDias()">Calcular</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        function calcularDias() {
+            // Obtener fecha de cumpleaños
+            const fechaCumple = new Date(document.getElementById("cumple").value);
+            
+            // Validar que se ingresó una fecha
+            if (isNaN(fechaCumple.getTime())) {
+                alert("Por favor ingresa una fecha válida");
+                return;
+            }
+            
+            // Obtener fecha actual
+            const hoy = new Date();
+            
+            // Crear fecha de cumple para este año
+            const cumpleEsteAnio = new Date(
+                hoy.getFullYear(),
+                fechaCumple.getMonth(),
+                fechaCumple.getDate()
+            );
+            
+            // Si ya pasó este año, calcular para el próximo
+            if (hoy > cumpleEsteAnio) {
+                cumpleEsteAnio.setFullYear(hoy.getFullYear() + 1);
+            }
+            
+            // Calcular diferencia en milisegundos y convertir a días
+            const diffMs = cumpleEsteAnio - hoy;
+            const diffDias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+            
+            // Mostrar resultado
+            document.getElementById("resultado").innerHTML = 
+                `Faltan <strong>${diffDias}</strong> días para tu próximo cumpleaños!`;
+        }
+    </script>
+</body>
+</html>

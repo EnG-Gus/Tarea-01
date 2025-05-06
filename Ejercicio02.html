@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h3>¿Es número primo?</h3>
+    <input type="number" id="num" placeholder="Ingresa un número">
+    <button onclick="check()">Verificar</button>
+    <p id="result"></p>
+
+    <script>
+        function check() {
+            const n = parseInt(document.getElementById("num").value);
+            let isPrime = true;
+            
+            if (n < 2) isPrime = false;
+            else {
+                for (let i = 2; i < n; i++) {
+                    if (n % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+            
+            document.getElementById("result").innerHTML = 
+                isPrime ? `${n} es primo` : `${n} no es primo`;
+        }
+    </script>
+</body>
+</html>
